@@ -5,16 +5,16 @@ const { body } = require("express-validator");
 const homeController = require("../controller/home-controller");
 const { isAuth, checkRole } = require("../middleware/isAuth");
 
-router.get("/", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
-});
+// router.get("/", (req, res) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   res.setHeader("Access-Control-Max-Age", "1800");
+//   res.setHeader("Access-Control-Allow-Headers", "content-type");
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+//   );
+// });
 
 router.get("/", homeController.getProduct);
 router.get("/chatClient", homeController.getChatClient);
