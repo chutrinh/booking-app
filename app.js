@@ -81,55 +81,55 @@ mongoose
   )
   .then(() => {
     const server = app.listen(process.env.PORT||5000);
-    const io = require("socket.io")(server, {
-      cors: {
-        origin: ["http://localhost:3000", "http://localhost:3001"],
-        methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
-        credentials: true,
-      },
-    });
+    // const io = require("socket.io")(server, {
+    //   cors: {
+    //     origin: ["http://localhost:3000", "http://localhost:3001"],
+    //     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    //     credentials: true,
+    //   },
+    // });
 
-    io.on("connection", (socket) => {
-      // thông báo kết nối đến client
-      console.log("connected to client");
+    // io.on("connection", (socket) => {
+    //   // thông báo kết nối đến client
+    //   console.log("connected to client");
 
-      // lắng nghe sự kiện submit tin nhắn của người dùng lên server
-      socket.on("chat message", (msg) => {
-        let message;
-        if ("msgClient" in msg) {
-          message = { msgClient: msg.msgClient };
-        }
-        if ("msgAdmin" in msg) {
-          message = { msgAdmin: msg.msgAdmin };
-        }
+    //   // lắng nghe sự kiện submit tin nhắn của người dùng lên server
+    //   socket.on("chat message", (msg) => {
+    //     let message;
+    //     if ("msgClient" in msg) {
+    //       message = { msgClient: msg.msgClient };
+    //     }
+    //     if ("msgAdmin" in msg) {
+    //       message = { msgAdmin: msg.msgAdmin };
+    //     }
 
-        Chat.findOne({ roomId: msg.roomId })
-          .then((room) => {
-            if (room) {
-              room.content.push(message);
-              return room.save();
-            } else {
-              const newRoom = new Chat({
-                roomId: msg.roomId,
-                content: message,
-              });
-              return newRoom.save();
-            }
-          })
-          .then((room) => {
-            // gửi tin nhắn cho client
-            Chat.find().then((chats) => {
-              console.log(chats);
-              socket.broadcast.emit("chat message", chats);
-              socket.emit("chat message", chats);
-            });
-          });
-      });
+    //     Chat.findOne({ roomId: msg.roomId })
+    //       .then((room) => {
+    //         if (room) {
+    //           room.content.push(message);
+    //           return room.save();
+    //         } else {
+    //           const newRoom = new Chat({
+    //             roomId: msg.roomId,
+    //             content: message,
+    //           });
+    //           return newRoom.save();
+    //         }
+    //       })
+    //       .then((room) => {
+    //         // gửi tin nhắn cho client
+    //         Chat.find().then((chats) => {
+    //           console.log(chats);
+    //           socket.broadcast.emit("chat message", chats);
+    //           socket.emit("chat message", chats);
+    //         });
+    //       });
+    //   });
 
-      // kiểm tra kết nối
-      socket.on("disconnect", () => {
-        console.log("người dùng thoát");
-      });
-    });
+    //   // kiểm tra kết nối
+    //   socket.on("disconnect", () => {
+    //     console.log("người dùng thoát");
+    //   });
+    // });
     console.log("connect successfuly!");
   });
