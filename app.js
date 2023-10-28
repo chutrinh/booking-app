@@ -62,7 +62,7 @@ app.use("/",(req,res,next)=>{
 
 const bodyParser = require("body-parser");
 // const cookieParser = require("cookie-parser");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 app.use(bodyParser.json());
 // app.use(cookieParser());
 
