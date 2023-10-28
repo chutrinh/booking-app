@@ -60,10 +60,10 @@ app.user("/",(req,res,next)=>{
 // );
 // app.use("/images", express.static(path.join(__dirname, "images")));
 
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 // const cookieParser = require("cookie-parser");
 // const mongoose = require("mongoose");
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 // app.use(cookieParser());
 
 // const authRouter = require("./router/auth-router");
