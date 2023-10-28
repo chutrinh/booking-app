@@ -84,7 +84,7 @@ mongoose
     "mongodb+srv://trinhtvfx22649:lcm7V5M9JoUitZEL@cluster0.xmpc1ki.mongodb.net/assm3?retryWrites=true&w=majority&appName=AtlasApp"
   )
   .then(() => {
-    const server = app.listen(process.env.PORT||5000);
+    const server = app.listen(process.env.PORT || 5000);
     // const io = require("socket.io")(server, {
     //   cors: {
     //     origin: ["http://localhost:3000", "http://localhost:3001"],
