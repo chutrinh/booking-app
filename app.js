@@ -12,7 +12,7 @@ app.use(
   })
 );
 
-app.user("/",(req,res,next)=>{
+app.use("/",(req,res,next)=>{
   res.send("<h1>chú trình</h1>")
 })
 
