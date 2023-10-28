@@ -16,49 +16,49 @@ app.use(
 //   res.send("<h1>chú trình</h1>")
 // })
 
-// const session = require("express-session");
-// const MongodbStore = require("connect-mongodb-session")(session);
-// const store = new MongodbStore({
-//   uri: "mongodb+srv://trinhtvfx22649:lcm7V5M9JoUitZEL@cluster0.xmpc1ki.mongodb.net/assm3?retryWrites=true&w=majority&appName=AtlasApp",
-//   collection: "session",
-// });
-// app.use(
-//   session({
-//     secret: "my secret",
-//     resave: false,
-//     saveUninitialized: false,
-//     store: store,
-//     cookie: {
-//       maxAge: 30 * 60 * 1000, // Đặt thời hạn cho phiên là 30 phút (30 * 60 giây * 1000 mili giây)
-//     },
-//   })
-// );
+const session = require("express-session");
+const MongodbStore = require("connect-mongodb-session")(session);
+const store = new MongodbStore({
+  uri: "mongodb+srv://trinhtvfx22649:lcm7V5M9JoUitZEL@cluster0.xmpc1ki.mongodb.net/assm3?retryWrites=true&w=majority&appName=AtlasApp",
+  collection: "session",
+});
+app.use(
+  session({
+    secret: "my secret",
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    cookie: {
+      maxAge: 30 * 60 * 1000, // Đặt thời hạn cho phiên là 30 phút (30 * 60 giây * 1000 mili giây)
+    },
+  })
+);
 
-// // nhận file ảnh
-// const multer = require("multer");
-// const fileStore = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "images");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, Date.now() + "-" + file.originalname);
-//   },
-// });
-// const fileFileter = (req, file, cb) => {
-//   if (
-//     file.mimetype === "image/jpeg" ||
-//     file.mimetype === "image/png" ||
-//     file.mimetype === "image/jpeg"
-//   ) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//   }
-// };
-// app.use(
-//   multer({ storage: fileStore, fileFilter: fileFileter }).array("images")
-// );
-// app.use("/images", express.static(path.join(__dirname, "images")));
+// nhận file ảnh
+const multer = require("multer");
+const fileStore = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+const fileFileter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+app.use(
+  multer({ storage: fileStore, fileFilter: fileFileter }).array("images")
+);
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 const bodyParser = require("body-parser");
 // const cookieParser = require("cookie-parser");
@@ -68,16 +68,16 @@ app.use(bodyParser.json());
 
 // const authRouter = require("./router/auth-router");
 const homeRouter = require("./router/home-router");
-// const adminRouter = require("./router/admin-router");
-// const chatRouter = require("./router/chat-router");
-// app.use("/auth", authRouter);
-// app.use("/admin", adminRouter);
-// app.use("/chat", chatRouter);
+const adminRouter = require("./router/admin-router");
+const chatRouter = require("./router/chat-router");
+app.use("/auth", authRouter);
+app.use("/admin", adminRouter);
+app.use("/chat", chatRouter);
 app.use(homeRouter);
 
 // handing err
-// const { handingErrors } = require("./middleware/handing-errors");
-// app.use(handingErrors);
+const { handingErrors } = require("./middleware/handing-errors");
+app.use(handingErrors);
 
 mongoose
   .connect(
