@@ -12,9 +12,9 @@ app.use(
   })
 );
 
-app.use("/",(req,res,next)=>{
-  res.send("<h1>chú trình</h1>")
-})
+// app.use("/",(req,res,next)=>{
+//   res.send("<h1>chú trình</h1>")
+// })
 
 // const session = require("express-session");
 // const MongodbStore = require("connect-mongodb-session")(session);
@@ -66,18 +66,18 @@ const mongoose = require("mongoose");
 app.use(bodyParser.json());
 // app.use(cookieParser());
 
-// const authRouter = require("./router/auth-router");
-// const homeRouter = require("./router/home-router");
-// const adminRouter = require("./router/admin-router");
-// const chatRouter = require("./router/chat-router");
-// app.use("/auth", authRouter);
-// app.use("/admin", adminRouter);
-// app.use("/chat", chatRouter);
-// app.use(homeRouter);
+const authRouter = require("./router/auth-router");
+const homeRouter = require("./router/home-router");
+const adminRouter = require("./router/admin-router");
+const chatRouter = require("./router/chat-router");
+app.use("/auth", authRouter);
+app.use("/admin", adminRouter);
+app.use("/chat", chatRouter);
+app.use(homeRouter);
 
-// // handing err
-// const { handingErrors } = require("./middleware/handing-errors");
-// app.use(handingErrors);
+// handing err
+const { handingErrors } = require("./middleware/handing-errors");
+app.use(handingErrors);
 
 mongoose
   .connect(
