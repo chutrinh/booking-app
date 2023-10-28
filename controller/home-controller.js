@@ -2,7 +2,7 @@ const Product = require("../model/product-model");
 const Order = require("../model/order-model");
 const User = require("../model/user-model");
 const nodemailer = require("nodemailer");
-const mongodb = require("mongodb");
+// const mongodb = require("mongodb");
 require("dotenv").config();
 const { validationResult } = require("express-validator");
 const Chat = require("../model/session-chat-model");
