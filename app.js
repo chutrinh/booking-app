@@ -67,17 +67,17 @@ app.use(bodyParser.json());
 // app.use(cookieParser());
 
 // const authRouter = require("./router/auth-router");
-const homeRouter = require("./router/home-router");
+// const homeRouter = require("./router/home-router");
 // const adminRouter = require("./router/admin-router");
 // const chatRouter = require("./router/chat-router");
 // app.use("/auth", authRouter);
 // app.use("/admin", adminRouter);
 // app.use("/chat", chatRouter);
-app.use(homeRouter);
+// app.use(homeRouter);
 
 // handing err
-const { handingErrors } = require("./middleware/handing-errors");
-app.use(handingErrors);
+// const { handingErrors } = require("./middleware/handing-errors");
+// app.use(handingErrors);
 
 mongoose
   .connect(
