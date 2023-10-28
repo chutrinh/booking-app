@@ -66,7 +66,7 @@ const mongoose = require("mongoose");
 app.use(bodyParser.json());
 // app.use(cookieParser());
 
-// const authRouter = require("./router/auth-router");
+const authRouter = require("./router/auth-router");
 const homeRouter = require("./router/home-router");
 const adminRouter = require("./router/admin-router");
 const chatRouter = require("./router/chat-router");
