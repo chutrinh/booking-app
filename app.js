@@ -7,7 +7,7 @@ const cors = require("cors");
 app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: ["https://funny-kitten-69116d.netlify.app", "http://localhost:3001"],
+    origin: ["https://funny-kitten-69116d.netlify.app", "http://localhost:3000"],
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
   })
@@ -90,7 +90,7 @@ mongoose
     const server = app.listen(process.env.PORT || 5000);
     const io = require("socket.io")(server, {
       cors: {
-        origin: ["https://funny-kitten-69116d.netlify.app", "http://localhost:3001"],
+        origin: ["https://funny-kitten-69116d.netlify.app", "http://localhost:3000"],
         methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
         credentials: true,
       },
