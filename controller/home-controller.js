@@ -19,6 +19,7 @@ const transport = nodemailer.createTransport({
 });
 
 exports.getProduct = (req, res, next) => {
+  console.log("get cookie:", req.session)
   Product.find()
     .then((product) => {
       if (product.length > 0) {
