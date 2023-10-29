@@ -50,13 +50,11 @@ exports.postLogin = (req, res, next) => {
           if (comparePass) {
             req.session.islogin = true;
             req.session.user = user;
-            req.session.save().then(()=>{
-              res.status(200).json({
+            res.status(200).json({
               status: 200,
               message: "login successful",
               data: { fullName: user.fullName, role: user.role },
              });
-            })
           }
         });
       }
