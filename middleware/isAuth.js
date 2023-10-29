@@ -1,6 +1,7 @@
 const User = require("../model/user-model");
 
 exports.isAuth = (req, res, next) => {
+  console.log("req.session.islogin:", req.session.islogin)
   if (!req.session.islogin) {
     return next("vui lòng đăng nhập tài khoản");
   }
