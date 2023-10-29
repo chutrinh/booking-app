@@ -25,13 +25,12 @@ const store = new MongodbStore({
 });
 app.use(
   session({
-    secret: "my_secret",
+    secret: "my secret",
     resave: false,
     saveUninitialized: false,
     store: store,
     cookie: {
-      secure: true,
-      sameSite: "none",
+      secure: false,
       maxAge: 30 * 60 * 1000, // Đặt thời hạn cho phiên là 30 phút (30 * 60 giây * 1000 mili giây
     },
   })
