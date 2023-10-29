@@ -273,7 +273,7 @@ exports.postAddOrder = (req, res, next) => {
                         <td>
                           <img
                             style="width: 100%"
-                            src="${item.productId.img1}"
+                            src="${'https://booking-app-agfh.onrender.com/'+item.productId.img1}"
                             alt=""
                           />
                         </td>
