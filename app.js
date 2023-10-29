@@ -7,7 +7,7 @@ const cors = require("cors");
 app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["https://funny-kitten-69116d.netlify.app", "http://localhost:3001"],
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
   })
