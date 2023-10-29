@@ -30,7 +30,6 @@ app.use(
     saveUninitialized: false,
     store: store,
     cookie: {
-      secure: false,
       maxAge: 30 * 60 * 1000, // Đặt thời hạn cho phiên là 30 phút (30 * 60 giây * 1000 mili giây
     },
   })
