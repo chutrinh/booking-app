@@ -82,6 +82,11 @@ app.use(homeRouter);
 const { handingErrors } = require("./middleware/handing-errors");
 app.use(handingErrors);
 
+// not found page
+app.use((req,res,next)=>{
+  next("không tìm thấy trang bởi vì bạn đã nhập url bằng tay hãy click vào trang bạn muốn xem")
+})
+
 mongoose
   .connect(
     "mongodb+srv://trinhtvfx22649:lcm7V5M9JoUitZEL@cluster0.xmpc1ki.mongodb.net/assm3?retryWrites=true&w=majority&appName=AtlasApp"
