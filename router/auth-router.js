@@ -68,6 +68,8 @@ router.post(
                 reject("Email này không phải là admin");
               }
               resolve(true);
+            } else {
+              reject("Email khong ton tai");
             }
           });
         });
