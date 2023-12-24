@@ -2,7 +2,7 @@
 
 ## Getting Started
 1. Installation:
-- Clone the repository: git clone https://github.com/chutrinh/booking-app.git
+- Clone the repository: git clone https://github.com/chutrinh/e-commerce-server.git
 - Install dependencies: npm install
 2. Run the Application:
 - Start the server: npm start
